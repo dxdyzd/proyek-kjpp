@@ -33,9 +33,6 @@ export default function AdminOfficeDashboard() {
             <span className="role-text">Role: Admin Office</span>
           </div>
           <div className="topbar-actions">
-            <a className="secondary" href="/style-guide">
-              Style Guide
-            </a>
             <button
               className="secondary"
               onClick={() => {

@@ -69,17 +69,6 @@ export default function LoginPage() {
           </button>
         </form>
 
-        <p className="note">Gunakan login demo berikut untuk coba masuk.</p>
-        <div className="note">
-          adminoffice / office123 / Admin Office
-          <br />
-          admintkn / teknik123 / Admin Teknik
-          <br />
-          owner / owner123 / Owner
-        </div>
-        <p className="note">
-          <a href="/style-guide">Lihat Figma Style Guide</a>
-        </p>
         {error && <div className="error-message">{error}</div>}
       </div>
     </section>

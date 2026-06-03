@@ -73,9 +73,6 @@ export default function DashboardPage() {
             <span className="role-text">Role: {roleLabel[user.role]}</span>
           </div>
           <div className="topbar-actions">
-            <a className="secondary" href="/style-guide">
-              Style Guide
-            </a>
             <button className="secondary" onClick={() => { logout(); navigate('/'); }}>
               Keluar
             </button>

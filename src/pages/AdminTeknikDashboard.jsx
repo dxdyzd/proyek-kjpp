@@ -33,9 +33,6 @@ export default function AdminTeknikDashboard() {
             <span className="role-text">Role: Admin Teknik</span>
           </div>
           <div className="topbar-actions">
-            <a className="secondary" href="/style-guide">
-              Style Guide
-            </a>
             <button
               className="secondary"
               onClick={() => {
