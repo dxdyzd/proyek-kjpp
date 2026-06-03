@@ -1,6 +1,9 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage.jsx';
 import DashboardPage from './pages/DashboardPage.jsx';
+import AdminOfficeDashboard from './pages/AdminOfficeDashboard.jsx';
+import AdminTeknikDashboard from './pages/AdminTeknikDashboard.jsx';
+import OwnerDashboard from './pages/OwnerDashboard.jsx';
 import StyleGuidePage from './pages/StyleGuidePage.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 
@@ -13,6 +16,30 @@ function App() {
         element={
           <ProtectedRoute>
             <DashboardPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/dashboard/admin-office"
+        element={
+          <ProtectedRoute>
+            <AdminOfficeDashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/dashboard/admin-teknik"
+        element={
+          <ProtectedRoute>
+            <AdminTeknikDashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/dashboard/owner"
+        element={
+          <ProtectedRoute>
+            <OwnerDashboard />
           </ProtectedRoute>
         }
       />

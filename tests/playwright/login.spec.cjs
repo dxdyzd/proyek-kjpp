@@ -9,7 +9,7 @@ async function loginAs(page, username, password, role, expectedName) {
   await page.fill('#password', password);
   await page.selectOption('#role', role);
   await page.click('button:has-text("Masuk")');
-  await page.waitForURL('**/dashboard', { timeout: 5000 });
+  await page.waitForURL('**/dashboard**', { timeout: 5000 });
   await expect(page.locator('.welcome-text')).toContainText(`Halo, ${expectedName}`);
   await expect(page.locator('#spreadsheet-embed iframe')).toBeVisible();
 }

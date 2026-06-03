@@ -23,8 +23,8 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      await login({ username, password, role });
-      navigate('/dashboard', { replace: true });
+      const user = await login({ username, password, role });
+      navigate(`/dashboard/${user.role}`, { replace: true });
     } catch (err) {
       setError(err.message);
     } finally {

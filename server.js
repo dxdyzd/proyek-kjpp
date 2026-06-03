@@ -89,6 +89,43 @@ app.post('/api/logout', (req, res) => {
   return res.json({ message: 'Logged out' });
 });
 
+function verifyAccess(req, res, next) {
+  const auth = req.headers.authorization;
+  if (!auth || !auth.startsWith('Bearer ')) return res.status(401).json({ message: 'Missing token' });
+  const token = auth.split(' ')[1];
+  try {
+    const data = jwt.verify(token, JWT_ACCESS_SECRET);
+    req.user = data;
+    return next();
+  } catch (err) {
+    return res.status(401).json({ message: 'Invalid token' });
+  }
+}
+
+// Protected demo endpoint returning role-specific dashboard items
+app.get('/api/dashboard', verifyAccess, (req, res) => {
+  const role = req.user.role;
+  if (role === 'admin-office') {
+    return res.json({ items: [
+      { id: 1, title: 'Verifikasi surat masuk', due: 'Hari ini' },
+      { id: 2, title: 'Update tracking klien', due: 'Besok' },
+    ]});
+  }
+  if (role === 'admin-teknik') {
+    return res.json({ items: [
+      { id: 1, site: 'Lokasi A', date: '2026-06-05' },
+      { id: 2, site: 'Lokasi B', date: '2026-06-08' },
+    ]});
+  }
+  if (role === 'owner') {
+    return res.json({ items: [
+      { id: 1, item: 'Approve Laporan A', status: 'Pending' },
+      { id: 2, item: 'Tanda tangan Dokumen B', status: 'Waiting' },
+    ]});
+  }
+  return res.json({ items: [] });
+});
+
 app.get('/api/ping', (req, res) => {
   res.json({ status: 'ok' });
 });

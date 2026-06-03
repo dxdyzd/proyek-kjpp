@@ -101,7 +101,7 @@ export function AuthProvider({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, isAuthenticated: Boolean(user) }}>
+    <AuthContext.Provider value={{ user, login, logout, isAuthenticated: Boolean(user), authFetch }}>
       {children}
     </AuthContext.Provider>
   );
